@@ -19,6 +19,7 @@ import User from "./pages/User";
 import ProductCategory from "./pages/ProductCategory";
 import ProductDetail from "./pages/ProductDetail";
 import CreateProduct from "./pages/CreateProduct";
+import UserDetail from "./pages/UserDetail";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -32,6 +33,7 @@ const router = createBrowserRouter(
         <Route path="/app/product/:productId" element={<ProductDetail />} />
         <Route path="/app/productcategory" element={<ProductCategory />} />
         <Route path="/app/user" element={<User />} />
+        <Route path="/app/user/:userId" element={<UserDetail />} />
       </Route>
       <Route path="*" element={<PageNotFound />} />
     </Route>,

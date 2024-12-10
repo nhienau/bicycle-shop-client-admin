@@ -2,7 +2,7 @@ import NavItem from "./NavItem";
 
 function Navigation() {
   return (
-    <nav className="flex flex-col p-2 gap-2">
+    <nav className="flex flex-col gap-2 p-2">
       <NavItem to="/app/product" title="Sản phẩm">
         Sản phẩm
       </NavItem>
@@ -13,7 +13,7 @@ function Navigation() {
         Đơn hàng
       </NavItem>
       <NavItem to="/app/user" title="Người dùng">
-        Người dùng
+        Khách hàng
       </NavItem>
     </nav>
   );
