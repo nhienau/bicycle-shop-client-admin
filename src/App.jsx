@@ -20,12 +20,27 @@ import ProductCategory from "./pages/ProductCategory";
 import ProductDetail from "./pages/ProductDetail";
 import CreateProduct from "./pages/CreateProduct";
 import UserDetail from "./pages/UserDetail";
+import ProtectedRoute from "./ui/ProtectedRoute";
+import AuthLayout from "./ui/AuthLayout";
+import Home from "./pages/Home";
+import AppPage from "./pages/AppPage";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route errorElement={<ErrorFallback />}>
-      <Route path="/login" element={<Login />} />
-      <Route element={<AppLayout />} ErrorBoundary={ErrorFallback}>
+      <Route path="/" element={<Home />} />
+      <Route element={<AuthLayout />}>
+        <Route path="/login" element={<Login />} />
+      </Route>
+      <Route path="/app" element={<AppPage />} />
+      <Route
+        element={
+          <ProtectedRoute>
+            <AppLayout />
+          </ProtectedRoute>
+        }
+        ErrorBoundary={ErrorFallback}
+      >
         <Route path="/app/order" element={<Order />} />
         <Route path="/app/order/:orderId" element={<OrderDetail />} />
         <Route path="/app/product" element={<Product />} />
