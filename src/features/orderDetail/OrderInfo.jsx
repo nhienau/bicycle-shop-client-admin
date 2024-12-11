@@ -13,9 +13,17 @@ import {
 import OrderItem from "./OrderItem";
 import ButtonUpdateStatus from "./ButtonUpdateStatus";
 import { HiOutlinePencil } from "react-icons/hi2";
+import { useEffect } from "react";
+import { TITLE_POSTFIX } from "@/utils/constants";
 
 function OrderInfo() {
   const { isLoading, isFetching, data } = useOrder();
+
+  useEffect(() => {
+    document.title = data?.id
+      ? `Đơn hàng #${data?.id} - ${TITLE_POSTFIX}`
+      : TITLE_POSTFIX;
+  }, [data?.id]);
 
   if (isLoading || isFetching) {
     return (

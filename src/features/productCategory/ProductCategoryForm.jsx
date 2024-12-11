@@ -12,6 +12,7 @@ import { VisuallyHidden } from "@radix-ui/react-visually-hidden";
 import { useForm } from "react-hook-form";
 import { useAddProductCategory } from "./useAddProductCategory";
 import { useUpdateProductCategory } from "./useUpdateProductCategory";
+import { useState } from "react";
 
 function ProductCategoryForm({
   defaultValues = {},
@@ -20,6 +21,7 @@ function ProductCategoryForm({
 }) {
   const { mutate: add, isPending: isAdding } = useAddProductCategory();
   const { mutate: update, isPending: isUpdating } = useUpdateProductCategory();
+  const [open, setOpen] = useState(false);
 
   const { register, handleSubmit, formState, reset } = useForm({
     defaultValues,
@@ -34,6 +36,7 @@ function ProductCategoryForm({
       add(requestData, {
         onSuccess: () => {
           reset();
+          setOpen(false);
         },
       });
     } else if (mode === "update") {
@@ -42,7 +45,7 @@ function ProductCategoryForm({
   }
 
   return (
-    <Dialog>
+    <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>{children}</DialogTrigger>
       <DialogContent className="h-screen min-w-full sm:h-auto sm:min-h-[16rem] md:min-w-[28rem] md:max-w-[32rem]">
         <DialogHeader>

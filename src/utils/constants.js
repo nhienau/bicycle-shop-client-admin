@@ -44,3 +44,5 @@ export const ORDER_STATUSES = [
   "Đã giao",
   "Đã huỷ",
 ];
+
+export const TITLE_POSTFIX = "Bicycle shop";

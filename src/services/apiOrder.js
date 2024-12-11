@@ -6,12 +6,14 @@ export async function getOrders({
   fromDate = "",
   toDate = "",
   pageNumber = 1,
+  userId = "",
 }) {
   const params = {
     statusName,
     customerName,
     fromDate,
     toDate,
+    userId,
     pageNumber,
     pageSize: PAGE_SIZE,
   };

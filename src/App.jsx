@@ -19,19 +19,79 @@ import User from "./pages/User";
 import ProductCategory from "./pages/ProductCategory";
 import ProductDetail from "./pages/ProductDetail";
 import CreateProduct from "./pages/CreateProduct";
+import UserDetail from "./pages/UserDetail";
+import ProtectedRoute from "./ui/ProtectedRoute";
+import AuthLayout from "./ui/AuthLayout";
+import Home from "./pages/Home";
+import AppPage from "./pages/AppPage";
+import Page from "./ui/Page";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route errorElement={<ErrorFallback />}>
-      <Route path="/login" element={<Login />} />
-      <Route element={<AppLayout />} ErrorBoundary={ErrorFallback}>
-        <Route path="/app/order" element={<Order />} />
+      <Route path="/" element={<Home />} />
+      <Route element={<AuthLayout />}>
+        <Route
+          path="/login"
+          element={
+            <Page title="Đăng nhập">
+              <Login />
+            </Page>
+          }
+        />
+      </Route>
+      <Route path="/app" element={<AppPage />} />
+      <Route
+        element={
+          <ProtectedRoute>
+            <AppLayout />
+          </ProtectedRoute>
+        }
+        ErrorBoundary={ErrorFallback}
+      >
+        <Route
+          path="/app/order"
+          element={
+            <Page title="Đơn hàng">
+              <Order />
+            </Page>
+          }
+        />
         <Route path="/app/order/:orderId" element={<OrderDetail />} />
-        <Route path="/app/product" element={<Product />} />
-        <Route path="/app/product/create" element={<CreateProduct />} />
+        <Route
+          path="/app/product"
+          element={
+            <Page title="Sản phẩm">
+              <Product />
+            </Page>
+          }
+        />
+        <Route
+          path="/app/product/create"
+          element={
+            <Page title="Thêm sản phẩm">
+              <CreateProduct />
+            </Page>
+          }
+        />
         <Route path="/app/product/:productId" element={<ProductDetail />} />
-        <Route path="/app/productcategory" element={<ProductCategory />} />
-        <Route path="/app/user" element={<User />} />
+        <Route
+          path="/app/productcategory"
+          element={
+            <Page title="Loại sản phẩm">
+              <ProductCategory />
+            </Page>
+          }
+        />
+        <Route
+          path="/app/user"
+          element={
+            <Page title="Khách hàng">
+              <User />
+            </Page>
+          }
+        />
+        <Route path="/app/user/:userId" element={<UserDetail />} />
       </Route>
       <Route path="*" element={<PageNotFound />} />
     </Route>,
