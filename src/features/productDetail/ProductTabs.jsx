@@ -6,6 +6,8 @@ import ImageTab from "../productImage/ImageTab";
 import PageNotFound from "@/pages/PageNotFound";
 import Spinner from "@/ui/Spinner";
 import ProductForm from "../products/ProductForm";
+import { useEffect } from "react";
+import { TITLE_POSTFIX } from "@/utils/constants";
 
 function ProductTabs() {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -16,6 +18,10 @@ function ProductTabs() {
     tabParam && ["info", "detail", "images"].includes(tabParam.toLowerCase())
       ? tabParam.toLowerCase()
       : "info";
+
+  useEffect(() => {
+    document.title = data ? `${data.name} - ${TITLE_POSTFIX}` : TITLE_POSTFIX;
+  }, [data]);
 
   if (isLoading || isFetching) {
     return (

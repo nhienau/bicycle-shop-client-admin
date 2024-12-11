@@ -1,9 +1,17 @@
 import Spinner from "@/ui/Spinner";
 import { useUser } from "./useUser";
 import PageNotFound from "@/pages/PageNotFound";
+import { useEffect } from "react";
+import { TITLE_POSTFIX } from "@/utils/constants";
 
 function UserInfo() {
   const { isLoading, data, isFetching } = useUser();
+
+  useEffect(() => {
+    document.title = data
+      ? `${data.name} - Khách hàng - ${TITLE_POSTFIX}`
+      : TITLE_POSTFIX;
+  }, [data]);
 
   if (isLoading || isFetching)
     return (
