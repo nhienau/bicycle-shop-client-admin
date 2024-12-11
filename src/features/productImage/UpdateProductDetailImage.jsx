@@ -23,7 +23,7 @@ function UpdateProductDetailImage({ productDetail, children }) {
   return (
     <Dialog>
       <DialogTrigger asChild>{children}</DialogTrigger>
-      <DialogContent className="h-screen min-w-full sm:h-auto sm:min-h-[16rem] md:min-w-[48rem] md:max-w-[50rem]">
+      <DialogContent className="h-screen min-w-full sm:min-h-[16rem] md:min-w-[48rem] md:max-w-[50rem]">
         <DialogHeader>
           <DialogTitle>Cập nhật hình ảnh</DialogTitle>
           <DialogDescription>
