@@ -28,7 +28,7 @@ function UpdateProductDetailImage({ productDetail, children }) {
           <DialogTitle>Cập nhật hình ảnh</DialogTitle>
           <DialogDescription>
             Chọn hình ảnh cần cập nhật cho thuộc tính{" "}
-            <span className="font-bold text-slate-700">{"Test"}</span>
+            <span className="font-bold text-slate-700">{data.name}</span>
           </DialogDescription>
         </DialogHeader>
         {productDetail.productImage === null && (

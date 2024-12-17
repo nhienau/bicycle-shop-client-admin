@@ -7,8 +7,11 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 import ProductDetailForm from "./ProductDetailForm";
+import { useProduct } from "./useProduct";
 
 function ProductDetailDialog({ mode = "create", productDetail, children }) {
+  const { data } = useProduct();
+
   const actionText = mode === "create" ? "Thêm" : "Cập nhật";
 
   return (
@@ -19,7 +22,7 @@ function ProductDetailDialog({ mode = "create", productDetail, children }) {
           <DialogTitle>{actionText} thuộc tính</DialogTitle>
           <DialogDescription>
             {actionText} thuộc tính cho sản phẩm{" "}
-            <span className="font-bold text-slate-700">{"Test"}</span>
+            <span className="font-bold text-slate-700">{data.name}</span>
           </DialogDescription>
         </DialogHeader>
         <ProductDetailForm defaultValues={productDetail} mode={mode} />

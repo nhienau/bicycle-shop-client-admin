@@ -8,8 +8,11 @@ import {
 } from "@/components/ui/dialog";
 import { HiOutlinePlus } from "react-icons/hi2";
 import AddImageForm from "./AddImageForm";
+import { useProduct } from "../productDetail/useProduct";
 
 function AddImage() {
+  const { data } = useProduct();
+
   return (
     <Dialog>
       <DialogTrigger asChild>
@@ -23,7 +26,7 @@ function AddImage() {
           <DialogTitle>Thêm hình ảnh</DialogTitle>
           <DialogDescription>
             Bạn đang thêm hình ảnh cho sản phẩm{" "}
-            <span className="font-bold text-slate-700">{"Test"}</span>
+            <span className="font-bold text-slate-700">{data.name}</span>
           </DialogDescription>
         </DialogHeader>
 
